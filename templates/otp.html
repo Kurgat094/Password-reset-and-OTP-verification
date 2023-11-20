@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+  {% block title %}
+  {% endblock %}
+
+
+  {% block body %}
+  <form action="" method="POST" >
+    <div class="conttainer">
+      <div class="row">
+        <div class="card">
+          
+          {% with messages=get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+          {% for category,msg in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            <strong>{{msg}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+          {% endfor %}
+          {% endif %}
+
+          {% endwith %}
+            <h3 style="color: green;">OTP verification!</h3>
+            <input type="text" placeholder="Enter OTP-CODE"name="user_otp" required>
+            <input type="submit"value="Enter" class="btn btn-success" >
+        </div>
+      </div>
+    </div>
+      
+  </form>
+  {% endblock %}

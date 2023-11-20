@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block tittle %}
+{% endblock %}
+
+{% block body %}
+<form action="" method="POST">
+    <div class="container">
+        <div class="row">
+        <div class="bin">
+          {% with messages=get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+          {% for category,msg in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            <strong>{{msg}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+          {% endfor %}
+          {% endif %}
+
+          {% endwith %}
+          {{session['id']}}
+            {% if 'id' in session %}
+            <h3>MY Schedule</h3>
+                <label for="">My Event</label><br>
+                <textarea name="message" id=""placeholder="Messages"></textarea><br>
+                <label for="">Location</label><br>
+                <input type="text" name="location" id="" placeholder="Enter your location"><br>
+                <label for="">Date</label><br>
+                <input type="date" name="date" placeholder="Enter date"><br>
+                <label for="">Time</label><br>
+                <input type="Time" placeholder="Enter Time" name="time"><br>
+                <label for="">Duration</label><br>
+                <input type="text"placeholder="Enter the duration" name="duration"><br>
+                <div class="btn"><input class="btn btn-success" type="submit" value="submit" >  <br></div>
+                <p>Show my schedule <a href="/schedule">Click here</a></p>
+                {% else %}
+                <p>Please login with your username <a href="/login" class="btn btn-warning">login</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

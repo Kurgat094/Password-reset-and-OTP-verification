@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block body %}
+<form action=""method='POST'>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                {% with messages=get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                 {% for category,msg in messages %}
+                 <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                  <strong>{{msg}}</strong> 
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+        
+                 {% endfor %}
+                {% endif %}
+        
+                {% endwith %}
+                <h3 style="color: rgb(116, 4, 73);">Are you sure You want to log Out?</h3>
+                <div class="log">
+                    <div class="col-xl-6" class="btn btn-close"> <button><a href="/yes" class="btn btn">Yes</a></button></div>
+                <div class="col-xl-6"class="btn btn-close"><button><a href="/no" class="btn btn" style="border-color: black;border: 2px black;">No</a></button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

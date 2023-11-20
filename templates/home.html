@@ -1,0 +1,29 @@
+{%  extends 'base.html' %}
+
+{% block tittle %}
+{% endblock %}
+
+
+{% block body %}
+<form action=""method='post'>
+    <div class="container">
+        <div class="row">
+            {{session['name']}}
+            {% if 'name' in session %}
+            <div class="col-xl-6">
+                <nav>
+                    <a href="/menu" class="btn btn-success">Menu</a>
+                    <a href="/dashboard"class="btn btn-success">Dashboard</a>
+                    <a href="/about"class="btn btn-success">About</a>
+                    <a href="/wantto_log"class="btn btn-danger" style="right: 100%;">Logout</a>
+                </nav>
+            {% else %}
+            <div class="col-xl-6">
+                <a href="/login"class="btn btn-success">Login</a>
+                <a href="/register"class="btn btn-warning">Register</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</form>
+{% endblock %}

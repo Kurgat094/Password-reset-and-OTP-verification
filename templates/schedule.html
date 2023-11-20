@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block tittle %}
+ <img src="" alt="">   schedule
+{% endblock %}
+
+{% block body %}
+<form action="" method="POST">
+    <div class="container">
+        <div class="box">
+            <div class="row">
+          {% with messages=get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+          {% for category,msg in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            <strong>{{msg}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+          {% endfor %}
+          {% endif %}
+
+          {% endwith %}
+                 <h3><p class="btn btn-success">{{session['name']}}'s Schedule</p></h3> 
+                 <table class="table responsive">
+                    <tr>
+                        <th>Message</th>
+                        <th>location</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Duration</th>
+                     </tr>
+                    {% for row in data %}
+                    
+                    <tr>
+                        <td>{{row[0]}}</td>
+                        <td>{{row[1]}}</td>
+                        <td>{{row[2]}}</td>
+                        <td>{{row[3]}}</td>
+                        <td>{{row[4]}}</td>
+                    </tr>
+                    {% endfor %}
+                 </table>
+                    <p><b><i><a href="/menu" class="btn btn-warning">Add Event</a></i></b></p>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
